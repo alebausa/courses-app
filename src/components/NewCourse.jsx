@@ -10,7 +10,7 @@ export default function NewCourse(props) {
   // const [hasDiscount, setDiscount] = useState(false);
   // const [type, setType] = useState('remote');
   const [course, setCourse] = useState({
-    titleFromstate: '',
+    title: '',
     image: '',
     description: '',
     price: '',

@@ -36,11 +36,10 @@ function App() {
     }
   }
 
-  const newCourse = (newCourse) => {
-    console.log('Receiving: ', newCourse);
-    newCourse._id = courses.length + 1;
+  const handleNewCourse = (course) => {
+    course._id = courses.length + 1;
     const updatedCourses = [...courses];
-    updatedCourses.push(newCourse);
+    updatedCourses.push(course);
     setCourses(updatedCourses);
   }
 
@@ -54,7 +53,7 @@ function App() {
         {courses.map(elem => {
           return <CourseCard key={elem._id} info={elem} />
         })}
-      {showForm && <NewCourse onCreateNewCourse={newCourse} />}
+      {showForm && <NewCourse newCourse={handleNewCourse} />}
       <button className="card-btn outlined" onClick={() => setShowForm(prev => !prev)}>{!showForm ? "Create new course" : "Hide form"}</button>
     </div>
   );
