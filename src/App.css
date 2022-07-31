@@ -9,7 +9,8 @@ body {
   padding: 20px;
 }
 
-h1 {
+h1,
+h3 {
   text-align: center;
   color: #31afe5;
   margin: 10px 0 10px 0;
@@ -34,10 +35,43 @@ span.span-price {
   color: rgb(42, 129, 42);
 }
 
-button.card-btn {
+button.card-btn,
+div.form button[type="submit"] {
   margin-top: 10px;
   padding: 10px 20px;
   border: none;
   background-color: #31afe5;
   color: white;
+}
+
+button.outlined {
+  background-color: white;
+  border: 1px solid #31afe5;
+  color: #31afe5;
+}
+
+div.form {
+  margin: 20px 0;
+}
+
+div.form form input[type="text"],
+div.form form input[type="number"] {
+  width: 100%;
+  display: block;
+  margin: 5px 0;
+  padding: 5px;
+  border: none;
+}
+
+select {
+  width: 100%;
+  margin: 5px 0;
+  padding: 5px;
+  border: none;
+}
+
+div.check {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }

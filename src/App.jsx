@@ -2,20 +2,16 @@ import React, { useState } from 'react';
 import './App.css';
 import courseData from './data.json';
 import CourseCard from './components/CourseCard';
+import NewCourse from './components/NewCourse';
 
 function App() {
   const [courses, setCourses] = useState(courseData);
   const [admin, setAdmin] = useState(true);
-  // const arr = courseData.map(elem => {
-  //   return (
-  //     <CourseCard info={elem} />
-  //   )
-  // })
+  const [showForm, setShowForm] = useState(false);
 
   const handleRemote = () => {
     const filtered = courses.filter(elem => elem.type === "remote");
     setCourses(filtered);
-    // courses = filtered;
   }
 
   const handleSortByPrice = () => {
@@ -40,17 +36,26 @@ function App() {
     }
   }
 
+  const newCourse = (newCourse) => {
+    console.log('Receiving: ', newCourse);
+    newCourse._id = courses.length + 1;
+    const updatedCourses = [...courses];
+    updatedCourses.push(newCourse);
+    setCourses(updatedCourses);
+  }
+
 
   return (
     <div className="App">
       <h1>Super cool courses</h1>
-        {isAdmin()}
+      {isAdmin()}
         <button className="card-btn" onClick={handleSortByPrice}>Sort by price</button>
         <button className="card-btn" style={{ marginLeft: 10 }} onClick={handleRemote}>See remote courses</button>
         {courses.map(elem => {
           return <CourseCard key={elem._id} info={elem} />
         })}
-      {/* {arr} */}
+      {showForm && <NewCourse onCreateNewCourse={newCourse} />}
+      <button className="card-btn outlined" onClick={() => setShowForm(prev => !prev)}>{!showForm ? "Create new course" : "Hide form"}</button>
     </div>
   );
 }
